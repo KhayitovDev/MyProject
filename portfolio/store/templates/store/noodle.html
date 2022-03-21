@@ -1,0 +1,93 @@
+{% extends 'store/background.html' %}
+{% load static %}
+{% block content %}
+<style>
+
+.paging-links {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.paging-item {
+  list-style: none;
+  display: inline-block;
+  border: 1px solid #2F956D;
+  margin: 7px;
+}
+.paging-link {
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #2F956D;
+  background-color: transparent;
+}
+
+.paging-link.active,
+.paging-link:hover {
+  background-color: #2F956D;
+  color: white;
+}
+
+
+
+
+
+</style>
+
+
+
+<header class="row tm-welcome-section">
+    <h2 class="col-12 text-center tm-section-title">Welcome to Simple House</h2>
+    <p class="col-12 text-center">Total 3 HTML pages are included in this template. Header image has a parallax
+        effect. You can feel free to download, edit and use this TemplateMo layout for your commercial or
+        non-commercial websites.</p>
+</header>
+
+<div class="paging-links">
+        <nav>
+            <ul>
+                <li class="paging-item "><a href="{% url 'homepage' %}" class="paging-link">Pizza</a></li>
+                <li class="paging-item "><a href="{% url 'salad' %}" class="paging-link">Salad</a></li>
+                <li class="paging-item "><a href="{% url 'noodle' %}" class="paging-link  active">Noodle</a></li>
+
+            </ul>
+        </nav>
+    </div>
+<div class="row tm-gallery">
+    <div id="tm-gallery-page-noodle" class="tm-gallery-page ">
+        {% for a in noodles %}
+        <article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+            <figure>
+                <img src="{{a.imageURL}}" alt="Image" class="img-fluid tm-gallery-img"/>
+                <figcaption>
+                    <h4 class="tm-gallery-title">{{a.name}}</h4>
+                    <p class="tm-gallery-description">{{a.description}}</p>
+                    <p class="tm-gallery-price">${{a.price}}</p>
+                </figcaption>
+            </figure>
+        </article>
+        {% endfor %}
+    </div>
+</div>
+<div class="tm-section tm-container-inner">
+        <div class="row">
+            <div class="col-md-6">
+                <figure class="tm-description-figure">
+                    <img src="{% static 'img/fruit1.png' %}" alt="Image" class="img-fluid"/>
+                </figure>
+            </div>
+            <div class="col-md-6">
+                <div class="tm-description-box">
+                    <h4 class="tm-gallery-title">Maecenas nulla neque</h4>
+                    <p class="tm-mb-45">Redistributing this template as a downloadable ZIP file on any template
+                        collection site is strictly prohibited. You will need to <a rel="nofollow"
+                                                                                    href="https://templatemo.com/contact">talk
+                            to us</a> for additional permissions about our templates. Thank you.</p>
+                    <a href="{% url 'about' %}" class="tm-btn tm-btn-default tm-right">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
